@@ -23,8 +23,36 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: product.name,
-    description: product.description,
+    title: `${product.name} - Buy Online | Rudraksh Pharmacy`,
+    description: product.description || `Buy ${product.name} online at Rudraksh Pharmacy. Genuine product, verified by licensed pharmacists, fast delivery in Surat.`,
+    keywords: [
+      product.name,
+      `buy ${product.name}`,
+      product.category,
+      \"online pharmacy\",
+      \"genuine medicines\",
+      \"Rudraksh Pharmacy\",
+    ],
+    openGraph: {
+      title: `${product.name} | Rudraksh Pharmacy`,
+      description: product.description || `Buy ${product.name} online with verified quality and fast delivery.`,
+      type: \"product\",
+      url: `https://rudrakshpharmacy.com/products/${product.id}`,
+      images: product.image ? [{
+        url: product.image,
+        width: 800,
+        height: 800,
+        alt: product.name,
+      }] : [],
+    },
+    twitter: {
+      card: \"summary_large_image\",
+      title: `${product.name}`,
+      description: product.description || `Buy ${product.name} at Rudraksh Pharmacy`,
+    },
+    alternates: {
+      canonical: `/products/${product.id}`,
+    },
   };
 }
 
@@ -44,8 +72,42 @@ export default async function ProductDetailPage({ params }) {
     notFound();
   }
 
+  // Product structured data for SEO
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description || `${product.name} available at Rudraksh Pharmacy`,
+    "brand": {
+      "@type": "Brand",
+      "name": product.manufacturer || "Rudraksh Pharmacy"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://rudrakshpharmacy.com/products/${product.id}`,
+      "priceCurrency": "INR",
+      "price": product.discountedPrice || product.price,
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Rudraksh Pharmacy"
+      }
+    },
+    "category": product.category,
+  };
+
+  if (product.image) {
+    productSchema.image = product.image;
+  }
+
   return (
     <section className="section section-soft">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      
       <div className="container">
         <div className="breadcrumb-nav" style={{ marginBottom: "24px" }}>
           <Link href="/products" style={{ color: "#2563eb", textDecoration: "underline" }}>

@@ -4,9 +4,32 @@ import { products as otherProducts } from "../data/products";
 import { HomeSearchStrip } from "../components/home-search-strip";
 
 export const metadata = {
-  title: "Products",
+  title: "Buy Medicines & Healthcare Products Online | Rudraksh Pharmacy",
   description:
-    "Browse Rudraksh Pharmacy products including OTC medicines, wellness supplements, and medical devices.",
+    "Shop from 2,500+ genuine medicines, wellness supplements, and medical devices at Rudraksh Pharmacy. Verified products, licensed pharmacists, and fast delivery across Surat.",
+  keywords: [
+    "buy medicines online",
+    "online pharmacy India",
+    "OTC medicines",
+    "wellness supplements",
+    "medical devices online",
+    "Rudraksh Pharmacy products",
+    "genuine medicines Surat",
+  ],
+  openGraph: {
+    title: "Buy Medicines & Healthcare Products Online | Rudraksh Pharmacy",
+    description: "Shop from 2,500+ verified products with fast delivery and expert support.",
+    type: "website",
+    url: "https://rudrakshpharmacy.com/products",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Buy Medicines & Healthcare Products Online",
+    description: "Shop from 2,500+ verified products at Rudraksh Pharmacy.",
+  },
+  alternates: {
+    canonical: "/products",
+  },
 };
 
 export default async function ProductsPage({ searchParams }) {

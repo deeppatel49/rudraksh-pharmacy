@@ -2,9 +2,31 @@ import Link from "next/link";
 import { ContactInquiryForm } from "../components/contact-inquiry-form";
 
 export const metadata = {
-  title: "Contact",
+  title: "Contact Us | 24x7 Support | Rudraksh Pharmacy Surat",
   description:
-    "Contact Rudraksh Pharmacy for medicine support, bulk orders, and customer assistance.",
+    "Get 24x7 customer support from Rudraksh Pharmacy. Contact us for medicine inquiries, bulk orders, prescription help, and WhatsApp ordering. Call +91 99799 79688 or visit our Surat store.",
+  keywords: [
+    "contact Rudraksh Pharmacy",
+    "pharmacy customer support",
+    "medicine inquiry",
+    "bulk medicine orders",
+    "pharmacy Surat contact",
+    "WhatsApp medicine order",
+  ],
+  openGraph: {
+    title: "Contact Rudraksh Pharmacy | 24x7 Customer Support",
+    description: "Reach us for medicine inquiries, bulk orders, and expert assistance.",
+    type: "website",
+    url: "https://rudrakshpharmacy.com/contact",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact Rudraksh Pharmacy",
+    description: "24x7 support for all your medicine and healthcare needs.",
+  },
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default async function ContactPage({ searchParams }) {

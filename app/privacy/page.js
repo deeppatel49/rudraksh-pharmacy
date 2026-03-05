@@ -1,6 +1,22 @@
 export const metadata = {
-  title: "Privacy Notice",
-  description: "Learn how Rudraksh Pharmacy collects, uses, and protects your data.",
+  title: "Privacy Policy | Data Protection | Rudraksh Pharmacy",
+  description: "Learn how Rudraksh Pharmacy collects, uses, and protects your personal and medical information. GDPR compliant privacy practices for secure healthcare shopping.",
+  keywords: [
+    "privacy policy",
+    "data protection",
+    "Rudraksh Pharmacy privacy",
+    "medical data security",
+    "GDPR compliance",
+  ],
+  openGraph: {
+    title: "Privacy Policy - Rudraksh Pharmacy",
+    description: "How we protect your personal and medical information.",
+    type: "website",
+    url: "https://rudrakshpharmacy.com/privacy",
+  },
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

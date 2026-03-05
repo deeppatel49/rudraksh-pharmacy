@@ -3,9 +3,32 @@ import { getCachedMedicines } from "../data/medicines";
 import { products as otherProducts } from "../data/products";
 
 export const metadata = {
-  title: "Medicines - Rudraksh Pharmacy",
+  title: "Buy Medicines Online | Prescription & OTC Drugs | Rudraksh Pharmacy",
   description:
-    "Browse our comprehensive collection of medicines from 1mg, including prescription and OTC medications for all your healthcare needs.",
+    "Order prescription and OTC medicines online at Rudraksh Pharmacy. Wide selection from trusted brands, verified by licensed pharmacists. Fast home delivery in Surat, Gujarat.",
+  keywords: [
+    "buy medicines online",
+    "prescription medicines",
+    "OTC drugs online",
+    "generic medicines",
+    "branded medicines India",
+    "medicine delivery Surat",
+    "online medical store",
+  ],
+  openGraph: {
+    title: "Buy Prescription & OTC Medicines Online | Rudraksh Pharmacy",
+    description: "Order medicines online with verified quality and fast delivery.",
+    type: "website",
+    url: "https://rudrakshpharmacy.com/medicine",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Buy Medicines Online - Rudraksh Pharmacy",
+    description: "Prescription & OTC medicines with verified quality and fast delivery.",
+  },
+  alternates: {
+    canonical: "/medicine",
+  },
 };
 
 export default async function MedicinePage({ searchParams }) {

@@ -1,8 +1,15 @@
 import { ForgotPasswordFlow } from "../components/forgot-password-flow";
 
 export const metadata = {
-  title: "Forgot Password",
-  description: "Recover your account with OTP verification and reset your password securely.",
+  title: "Forgot Password | Reset Account | Rudraksh Pharmacy",
+  description: "Recover your Rudraksh Pharmacy account with secure OTP verification. Reset your password safely and regain access to your orders and prescriptions.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/forgot-password",
+  },
 };
 
 export default function ForgotPasswordPage() {

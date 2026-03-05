@@ -2,9 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "About Us",
+  title: "About Rudraksh Pharmacy | 11+ Years of Trusted Healthcare Service",
   description:
-    "Learn about Rudraksh Pharmacy's mission, expertise, and commitment to safe and affordable healthcare products.",
+    "Discover Rudraksh Pharmacy's 11-year journey serving 25,000+ families in Surat. Licensed pharmacists, 100% genuine products, and committed to affordable, safe healthcare for all.",
+  keywords: [
+    "Rudraksh Pharmacy about",
+    "trusted pharmacy Surat",
+    "licensed pharmacists",
+    "genuine medicines",
+    "pharmacy history",
+    "healthcare mission",
+  ],
+  openGraph: {
+    title: "About Rudraksh Pharmacy | 11+ Years Serving 25,000+ Families",
+    description: "Trusted healthcare partner with licensed pharmacists and 100% genuine products.",
+    type: "website",
+    url: "https://rudrakshpharmacy.com/about",
+  },
+  twitter: {
+    card: "summary",
+    title: "About Rudraksh Pharmacy",
+    description: "11+ years serving 25,000+ families with trusted healthcare.",
+  },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const trustStats = [

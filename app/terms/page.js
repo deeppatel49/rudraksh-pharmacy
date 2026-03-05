@@ -1,6 +1,22 @@
 export const metadata = {
-  title: "Conditions of Use",
-  description: "Read the terms and conditions for using Rudraksh Pharmacy services.",
+  title: "Terms & Conditions | Rudraksh Pharmacy",
+  description: "Read the terms and conditions for using Rudraksh Pharmacy services. Understand purchase policies, refund conditions, and usage guidelines for our online pharmacy.",
+  keywords: [
+    "terms and conditions",
+    "pharmacy terms",
+    "Rudraksh Pharmacy policies",
+    "refund policy",
+    "usage terms",
+  ],
+  openGraph: {
+    title: "Terms & Conditions - Rudraksh Pharmacy",
+    description: "Terms of service for using Rudraksh Pharmacy.",
+    type: "website",
+    url: "https://rudrakshpharmacy.com/terms",
+  },
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsPage() {
