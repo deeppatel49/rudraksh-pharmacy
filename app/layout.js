@@ -57,6 +57,10 @@ export const metadata = {
       "Secure and reliable online pharmacy for medicines and health essentials.",
     images: ["/rudraksha-logo-v2.png"],
   },
+  icons: {
+    icon: "/img/Make_logo_creative_and_dynamic_and_responive_and_l_delpmaspu.png",
+    apple: "/img/Make_logo_creative_and_dynamic_and_responive_and_l_delpmaspu.png",
+  },
 };
 
 const localBusinessSchema = {
