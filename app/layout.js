@@ -58,8 +58,8 @@ export const metadata = {
     images: ["/rudraksha-logo-v2.png"],
   },
   icons: {
-    icon: "/img/Make_logo_creative_and_dynamic_and_responive_and_l_delpmaspu.png",
-    apple: "/img/Make_logo_creative_and_dynamic_and_responive_and_l_delpmaspu.png",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
