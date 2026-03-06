@@ -5,6 +5,9 @@ export const metadata = {
   description: "Complete or edit your customer profile details.",
 };
 
-export default function ProfileSetupPage() {
-  return <ProfileSetupView />;
+export default async function ProfileSetupPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const initialNextPath = typeof resolvedSearchParams?.next === "string" ? resolvedSearchParams.next : "/profile";
+
+  return <ProfileSetupView initialNextPath={initialNextPath} />;
 }
