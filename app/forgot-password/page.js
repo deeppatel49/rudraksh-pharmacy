@@ -16,7 +16,6 @@ export const metadata = {
 export default function ForgotPasswordPage() {
   return (
     <section className="section container">
-      <ForgotPasswordFlow />
       <Suspense fallback={null}>
         <ForgotPasswordFlow />
       </Suspense>
