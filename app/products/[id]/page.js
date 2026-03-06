@@ -29,14 +29,14 @@ export async function generateMetadata({ params }) {
       product.name,
       `buy ${product.name}`,
       product.category,
-      \"online pharmacy\",
-      \"genuine medicines\",
-      \"Rudraksh Pharmacy\",
+      "online pharmacy",
+      "genuine medicines",
+      "Rudraksh Pharmacy",
     ],
     openGraph: {
       title: `${product.name} | Rudraksh Pharmacy`,
       description: product.description || `Buy ${product.name} online with verified quality and fast delivery.`,
-      type: \"product\",
+      type: "product",
       url: `https://rudrakshpharmacy.com/products/${product.id}`,
       images: product.image ? [{
         url: product.image,
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
       }] : [],
     },
     twitter: {
-      card: \"summary_large_image\",
+      card: "summary_large_image",
       title: `${product.name}`,
       description: product.description || `Buy ${product.name} at Rudraksh Pharmacy`,
     },
