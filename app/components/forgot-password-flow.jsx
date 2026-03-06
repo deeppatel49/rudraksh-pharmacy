@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useAuth } from "../context/auth-context";
 
 function isValidIdentifier(value) {
@@ -13,12 +13,12 @@ function isValidIdentifier(value) {
   return looksLikeEmail || looksLikePhone;
 }
 
-export function ForgotPasswordFlow() {
+export function ForgotPasswordFlow({ initialIdentifier = "", initialNextPath = "/products" }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { resetPassword, accountExistsForIdentifier, getRecoveryContactsForIdentifier } = useAuth();
 
-  const [identifier, setIdentifier] = useState(searchParams.get("identifier") || "");
+  const [identifier, setIdentifier] = useState(initialIdentifier);
   const [otpInput, setOtpInput] = useState("");
   const [resetToken, setResetToken] = useState("");
   const [otpSent, setOtpSent] = useState(false);
@@ -29,7 +29,7 @@ export function ForgotPasswordFlow() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const nextPath = useMemo(() => searchParams.get("next") || "/products", [searchParams]);
+  const nextPath = initialNextPath;
 
   async function handleSendOtp(event) {
     event.preventDefault();
