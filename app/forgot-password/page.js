@@ -13,12 +13,14 @@ export const metadata = {
   },
 };
 
-export default function ForgotPasswordPage() {
+export default async function ForgotPasswordPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const initialIdentifier = typeof resolvedSearchParams?.identifier === "string" ? resolvedSearchParams.identifier : "";
+  const initialNextPath = typeof resolvedSearchParams?.next === "string" ? resolvedSearchParams.next : "/products";
+
   return (
     <section className="section container">
-      <Suspense fallback={null}>
-        <ForgotPasswordFlow />
-      </Suspense>
+      <ForgotPasswordFlow initialIdentifier={initialIdentifier} initialNextPath={initialNextPath} />
     </section>
   );
 }
