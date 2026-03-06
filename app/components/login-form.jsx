@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useAuth } from "../context/auth-context";
 import { useCart } from "../context/cart-context";
 
@@ -42,9 +42,8 @@ function loadGoogleIdentityScript() {
   return googleScriptPromise;
 }
 
-export function LoginForm() {
+export function LoginForm({ initialParams = {} }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { user, isHydrated, login, registerWithPassword, loginWithPassword } = useAuth();
   const { addItem } = useCart();
   const [authView, setAuthView] = useState("signin");
@@ -63,34 +62,23 @@ export function LoginForm() {
   const [createMobileNumber, setCreateMobileNumber] = useState("");
   const [createPassword, setCreatePassword] = useState("");
   const [createConfirmPassword, setCreateConfirmPassword] = useState("");
-  const nextPath = useMemo(() => searchParams.get("next") || "/products", [searchParams]);
-  const actionType = useMemo(() => searchParams.get("action") || "", [searchParams]);
-  const actionProductId = useMemo(() => searchParams.get("productId") || "", [searchParams]);
-  const actionProductName = useMemo(() => searchParams.get("pname") || "", [searchParams]);
-  const actionProductImage = useMemo(() => searchParams.get("pimg") || "", [searchParams]);
-  const actionProductPrice = useMemo(() => {
-    const raw = Number(searchParams.get("pprice") || 0);
-    return Number.isFinite(raw) ? raw : 0;
-  }, [searchParams]);
-  const actionQuantity = useMemo(() => {
-    const raw = Number(searchParams.get("quantity") || 1);
-    return Number.isFinite(raw) ? Math.max(1, Math.floor(raw)) : 1;
-  }, [searchParams]);
-  const profilePath = useMemo(() => {
-    const safeNext = nextPath && nextPath !== "/profile" ? nextPath : "/products";
-    return `/profile?next=${encodeURIComponent(safeNext)}`;
-  }, [nextPath]);
-  const postLoginPath = useMemo(() => {
-    if (actionType === "buy_now") {
-      return "/checkout";
-    }
-
-    if (actionType === "add_to_cart") {
-      return nextPath || "/products";
-    }
-
-    return profilePath;
-  }, [actionType, nextPath, profilePath]);
+  const nextPath = typeof initialParams.next === "string" && initialParams.next ? initialParams.next : "/products";
+  const actionType = typeof initialParams.action === "string" ? initialParams.action : "";
+  const actionProductId = typeof initialParams.productId === "string" ? initialParams.productId : "";
+  const actionProductName = typeof initialParams.pname === "string" ? initialParams.pname : "";
+  const actionProductImage = typeof initialParams.pimg === "string" ? initialParams.pimg : "";
+  const parsedProductPrice = Number(initialParams.pprice ?? 0);
+  const actionProductPrice = Number.isFinite(parsedProductPrice) ? parsedProductPrice : 0;
+  const parsedQuantity = Number(initialParams.quantity ?? 1);
+  const actionQuantity = Number.isFinite(parsedQuantity) ? Math.max(1, Math.floor(parsedQuantity)) : 1;
+  const safeNext = nextPath && nextPath !== "/profile" ? nextPath : "/products";
+  const profilePath = `/profile?next=${encodeURIComponent(safeNext)}`;
+  const postLoginPath =
+    actionType === "buy_now"
+      ? "/checkout"
+      : actionType === "add_to_cart"
+        ? nextPath || "/products"
+        : profilePath;
   const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
   const runPostLoginAction = (sessionUser) => {
