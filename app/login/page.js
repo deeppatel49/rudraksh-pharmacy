@@ -19,10 +19,22 @@ export const metadata = {
   },
 };
 
-export default function LoginPage() {
+export default async function LoginPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+
+  const initialParams = {
+    next: typeof resolvedSearchParams?.next === "string" ? resolvedSearchParams.next : "",
+    action: typeof resolvedSearchParams?.action === "string" ? resolvedSearchParams.action : "",
+    productId: typeof resolvedSearchParams?.productId === "string" ? resolvedSearchParams.productId : "",
+    pname: typeof resolvedSearchParams?.pname === "string" ? resolvedSearchParams.pname : "",
+    pimg: typeof resolvedSearchParams?.pimg === "string" ? resolvedSearchParams.pimg : "",
+    pprice: typeof resolvedSearchParams?.pprice === "string" ? resolvedSearchParams.pprice : "",
+    quantity: typeof resolvedSearchParams?.quantity === "string" ? resolvedSearchParams.quantity : "",
+  };
+
   return (
     <section className="section container">
-      <LoginForm />
+      <LoginForm initialParams={initialParams} />
     </section>
   );
 }
