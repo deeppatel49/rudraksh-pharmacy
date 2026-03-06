@@ -36,7 +36,6 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${product.name} | Rudraksh Pharmacy`,
       description: product.description || `Buy ${product.name} online with verified quality and fast delivery.`,
-      type: "product",
       url: `https://rudrakshpharmacy.com/products/${product.id}`,
       images: product.image ? [{
         url: product.image,
